@@ -1352,15 +1352,7 @@ const materiasPrimariaAlta = [
         u3: "",
         u4: "",
       },
-      {
-        id_materia: 250,
-        materia: "Productividad y Desarrollo",
-        tipo: "Numerica",
-        u1: "",
-        u2: "",
-        u3: "",
-        u4: "",
-      },
+      
       {
         id_materia: 220,
         materia: "Emprendimiento para la Productividad",
@@ -2329,7 +2321,10 @@ const materiasPrimariaAlta = [
             } else if (esBasico) {
               blqs = {
                 1: bloquesBasicoBase[1].map((m) => ({ ...m })),
-                2: bloque2ExtracurricularTexto.map((m) => ({ ...m })),
+                // Filtramos Razonamiento Verbal (247) para que no salga en Básico, pero siga en Bachillerato
+                2: bloque2ExtracurricularTexto
+                     .filter(m => m.id_materia !== 247)
+                     .map((m) => ({ ...m })),
                 3: bloqueResponsabilidad.map((m) => ({ ...m })),
                 4: [],
                 5: [],
